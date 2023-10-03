@@ -10,7 +10,7 @@ export default function usePostDebt(onSuccess: () => void) {
 
   return useMutation(
     (value) => api.post(URLS.DEBT, value)
-    .then((resp) => {
+    .then((resp: any) => {
       console.log(resp);
       onSuccess();
       queryClient.invalidateQueries(URLS.DEBT);
@@ -22,7 +22,7 @@ export default function usePostDebt(onSuccess: () => void) {
         isClosable: true,
         position: 'bottom-right',
       })
-    }).catch((err) => {
+    }).catch((err: any) => {
       console.log(err.message);
       toast({
         title: "Error",

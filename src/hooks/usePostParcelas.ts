@@ -17,7 +17,7 @@ export default function usePostParcelas(onSuccess: () => void) {
 
   async function postParcelas(value: any) {
     return await api.post<TesteProps>(URLS.PARCELAS, value)
-    .then((resp) => {
+    .then((resp: any) => {
       console.log(resp);
       onSuccess();
       queryClient.invalidateQueries(URLS.DEBT);
@@ -30,7 +30,7 @@ export default function usePostParcelas(onSuccess: () => void) {
         isClosable: true,
         position: 'bottom-right',
       })
-    }).catch((err) => {
+    }).catch((err: any) => {
       console.log(err.message);
       toast({
         title: "Error",

@@ -10,7 +10,7 @@ export default function usePostUser(onSuccess: () => void) {
   async function postUser(value: any) {
     return await api
       .post(URLS.USERS, value)
-      .then((resp) => {
+      .then((resp: any) => {
         console.log(resp);
         onSuccess();
       toast({
@@ -22,7 +22,7 @@ export default function usePostUser(onSuccess: () => void) {
         position: 'bottom-right',
       })
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.log(err.message);
         toast({
           title: "Error",

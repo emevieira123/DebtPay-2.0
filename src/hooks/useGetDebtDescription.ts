@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable valid-typeof */
 import { useQuery } from "react-query";
 import { api } from "../services/api";
@@ -10,7 +11,7 @@ export default function useGetDebtDescription(debtId: string) {
     {
       enabled: typeof debtId !== null,
       cacheTime: 0,
-      onError: (error) => {
+      onError: (error: any) => {
         console.log(error);
       },
     }
@@ -22,6 +23,6 @@ export default function useGetDebtDescription(debtId: string) {
 async function getDebtDescription(debtId: string) {
   const response = await api
     .get(URLS.DEBT_DESCRIPTION.replace("{debtId}", debtId))
-    .then((resp) => resp.data);
+    .then((resp: any) => resp.data);
   return response;
 }

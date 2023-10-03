@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMutation } from "react-query";
 import { api } from "../services/api";
 import { URLS } from "../services/URLS";
@@ -15,7 +16,7 @@ export function usePutParcela() {
   async function putParcela(body: ParcelaType) {
     return await api
       .put(`${URLS.UPDATE_STATUS_PARCELAS.replace("{id}", body.parcelaId)}`, body)
-      .then((resp) => {
+      .then((resp: any) => {
         console.log(resp);
         queryClient.invalidateQueries(URLS.DEBT)
         queryClient.invalidateQueries(URLS.DEBT_DESCRIPTION);
@@ -28,7 +29,7 @@ export function usePutParcela() {
           position: 'bottom-right',
         });
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.log(err.message);
         toast({
           title: "Error",

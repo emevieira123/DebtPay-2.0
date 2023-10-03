@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useQuery } from "react-query";
 import { api } from "../services/api";
 import { URLS } from "../services/URLS";
@@ -7,7 +8,7 @@ export default function useGetDebts() {
     [URLS.DEBT],
     getDebts,
     {
-      onError: (err) => {
+      onError: (err: any) => {
         console.log(err);
       },
     }
@@ -17,5 +18,5 @@ export default function useGetDebts() {
 }
 
 function getDebts() {
-  return api.get(URLS.DEBT).then((resp) => resp.data);
+  return api.get(URLS.DEBT).then((resp: any) => resp.data);
 }
