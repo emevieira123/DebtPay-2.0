@@ -16,7 +16,7 @@ api.interceptors.request.use(
   }
 );
 
-api.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
+api.interceptors.response.use(undefined, function axiosRetryInterceptor(err: any) {
   if(err.response.status === 401) {
     localStorage.clear();
     window.location.reload()
